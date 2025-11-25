@@ -1,12 +1,16 @@
 #ifndef BSQ-H
 #define BSQ-H
 
+#include <stdlib.h>
+
 typedef struct s_map
 {
 	int rows;
 	char obs;
 	char empty;
 	char full;
+	int cols;
+	char **map_data;
 } t_map;
 
 int ft_is_printable(char c);
