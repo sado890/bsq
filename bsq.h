@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsq.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 15:11:56 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/26 15:14:56 by sevyesil         ###   ########.fr       */
+/*   Created: 2025/11/26 16:21:41 by muarici           #+#    #+#             */
+/*   Updated: 2025/11/26 17:06:39 by muarici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_map
 	t_square	square;
 }	t_map;
 
+int			fl_compleate(t_map *map, char *line);
+int			solve_map(t_map *map);
 int			ft_is_printable(char c);
 int			get_clean_len(char *str);
 int			are_chars_valid(char empty, char obs, char full);
@@ -54,5 +56,7 @@ void		init_dp_borders(int **dp, t_map *map);
 int			parse_map_body(char *content, t_map *map);
 int			parse_first_line(char *line, t_map *map);
 void		print_map(t_map *map);
+void		free_dp(int **dp, int rows);
+void		mark_square(t_map *map);
 
 #endif /* BSQ_H */

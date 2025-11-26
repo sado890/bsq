@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strict_atoi.c                                      :+:      :+:    :+:   */
+/*   solve_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/25 19:52:37 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/26 16:20:30 by muarici          ###   ########.fr       */
+/*   Created: 2025/11/26 16:17:18 by muarici           #+#    #+#             */
+/*   Updated: 2025/11/26 16:20:22 by muarici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	str_to_positive_int(char *str, int len)
-{
-	int	i;
-	int	nb;
+#include "bsq.h"
 
-	i = 0;
-	nb = 0;
-	while (i < len)
-	{
-		if (!(str[i] <= '9' && str[i] >= '0'))
-		{
-			return (-1);
-		}
-		else
-		{
-			nb = nb * 10 + (str[i] - '0');
-		}
-		i++;
-	}
-	return (nb);
+int	solve_map(t_map *map)
+{
+	int	**dp;
+
+	dp = allocate_dp(map->rows, map->cols);
+	if (!dp)
+		return (0);
+	init_dp_borders(dp, map);
+	fill_dp_table(dp, map);
+	map->square = find_max_square(dp, map);
+	free_dp(dp, map->rows);
+	if (map->square.size > 0)
+		mark_square(map);
+	return (1);
 }

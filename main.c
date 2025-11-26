@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 08:11:39 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/26 15:35:48 by sevyesil         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:09:31 by muarici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,6 @@ void	free_dp(int **dp, int rows)
 		i++;
 	}
 	free(dp);
-}
-
-int	solve_map(t_map *map)
-{
-	int	**dp;
-
-	dp = allocate_dp(map->rows, map->cols);
-	if (!dp)
-		return (0);
-	init_dp_borders(dp, map);
-	fill_dp_table(dp, map);
-	map->square = find_max_square(dp, map);
-	free_dp(dp, map->rows);
-	if (map->square.size > 0)
-		mark_square(map);
-	return (1);
 }
 
 int	process_map(char *content)
@@ -107,30 +91,27 @@ int	process_file(char *filename)
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	char	*content;
 
 	if (argc == 1)
 	{
 		content = read_stdin();
-		if (!content)
-		{
-			write(2, "map error\n", 10);
-			return (1);
-		}
-		process_map(content);
-		free(content);
+	}
+	else if (argc == 2)
+	{
+		content = read_file(argv[1]);
 	}
 	else
 	{
-		i = 1;
-		while (i < argc)
-		{
-			process_file(argv[i]);
-			if (i < argc - 1)
-				write(1, "\n", 1);
-			i++;
-		}
+		write(2, "Usage: ./bsq [file]\n", 20);
+		return (1);
 	}
+	if (!content)
+	{
+		write(2, "map error\n", 10);
+		return (1);
+	}
+	process_map(content);
+	free(content);
 	return (0);
 }

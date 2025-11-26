@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+         #
+#    By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/26 00:00:00 by sevyesil          #+#    #+#              #
-#    Updated: 2025/11/26 14:53:22 by sevyesil         ###   ########.fr        #
+#    Updated: 2025/11/26 17:07:08 by muarici          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = main.c \
        init_dp_borders.c \
        fill_dp_table.c \
        find_max_square.c \
+       solve_map.c \
        print_map.c \
        get_line_len.c \
        is_printable.c \
