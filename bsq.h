@@ -11,7 +11,15 @@ typedef struct s_map
 	char full;
 	int cols;
 	char **map_data;
+	t_square	square;
 } t_map;
+
+typedef struct s_square
+{
+    int row;
+    int col;
+    int size;
+}   t_square;
 
 int ft_is_printable(char c);
 int get_clean_len(char *str);

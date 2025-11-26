@@ -6,7 +6,7 @@
 /*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 01:47:59 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/26 01:49:24 by sevyesil         ###   ########.fr       */
+/*   Updated: 2025/11/26 01:50:42 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char *read_stdin(void)
 {
-	read_fd_to_buffer(STDIN_FILENO);
+	return (read_fd_to_buffer(STDIN_FILENO));
 }

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   allocate_dp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 01:39:39 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/26 02:03:32 by sevyesil         ###   ########.fr       */
+/*   Created: 2025/11/26 01:55:50 by sevyesil          #+#    #+#             */
+/*   Updated: 2025/11/26 03:42:17 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
+#include <stdlib.h>
 
-char	*read_file(char *filename)
+int	**allocate_dp(int rows, int cols)
 {
-	int		fd;
-	char	*buf;
+	int	**dp;
+	int	i;
+	int j;
 
-	if (filename == NULL)
+	i = 0;
+	dp = (int **)malloc(rows * sizeof(int *));
+	if (!dp)
+		return (NULL);
+	while (i < rows)
 	{
-		return (NULL);
+		dp[i] = (int *)malloc(cols * sizeof(int));
+		if (!dp[i])
+		{
+			j = 0;
+			while (j < i)
+			{
+				free(dp[i]);
+				i++;
+			}
+			free(dp);
+			return (NULL);
+		}
+		i++;
 	}
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
-	buf = read_fd_to_buffer(fd);
-	close(fd);
-	return (buf);
+	return (dp);
 }

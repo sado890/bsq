@@ -6,7 +6,7 @@
 /*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 22:16:49 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/25 23:29:43 by sevyesil         ###   ########.fr       */
+/*   Updated: 2025/11/26 02:05:17 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 char *append_buf(char *buf, size_t buf_len, char *chunk, ssize_t chunk_len)
 {
 	size_t total;
-	char *newbuf;
+	char	*newbuf;
 	size_t	i;
 
 	i = 0;
 	total = buf_len + (ssize_t)chunk_len + 1;
-	newbuf = malloc(total);
+	newbuf = (char *)malloc(total);
 	if (!newbuf)
 	{
 		free(buf);
