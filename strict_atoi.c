@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   strict_atoi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 19:52:37 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/25 20:53:31 by muarici          ###   ########.fr       */
+/*   Updated: 2025/11/26 15:37:53 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int str_to_positive_int(char *str, int len)
+int	str_to_positive_int(char *str, int len)
 {
-	int i;
-	int nb;
+	int	i;
+	int	nb;
 
 	i = 0;
 	nb = 0;

@@ -6,7 +6,7 @@
 /*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 11:33:15 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/26 13:42:05 by sevyesil         ###   ########.fr       */
+/*   Updated: 2025/11/26 14:58:44 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	fill_dp_table(int **dp, t_map *map)
 	int	min_val;
 
 	i = 1;
-
 	while (i < map->rows)
 	{
 		j = 1;

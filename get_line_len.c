@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_line_len.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 19:32:20 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/25 19:51:22 by muarici          ###   ########.fr       */
+/*   Updated: 2025/11/26 15:36:22 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int get_clean_len(char *str)
+int	get_clean_len(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 	{
@@ -23,6 +23,5 @@ int get_clean_len(char *str)
 	{
 		i--;
 	}
-	
 	return (i);
 }

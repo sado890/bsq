@@ -6,10 +6,11 @@
 /*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 01:39:39 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/26 02:03:32 by sevyesil         ###   ########.fr       */
+/*   Updated: 2025/11/26 14:59:19 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "bsq.h"
 #include <unistd.h>
 #include <fcntl.h>
 

@@ -6,12 +6,13 @@
 /*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 23:51:43 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/26 01:25:30 by sevyesil         ###   ########.fr       */
+/*   Updated: 2025/11/26 14:57:44 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "bsq.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 #define BUFFER_SIZE 4096
 
@@ -41,6 +42,7 @@ char	*read_fd_to_buffer(int fd)
 
 	buf = NULL;
 	buf_len = 0;
+	bytes_read = read(fd, tmp, BUFFER_SIZE);
 	while (bytes_read > 0)
 	{
 		buf = append_buf(buf, buf_len, tmp, bytes_read);

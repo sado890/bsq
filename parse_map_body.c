@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_body.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 08:14:15 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/26 08:37:47 by muarici          ###   ########.fr       */
+/*   Updated: 2025/11/26 15:34:23 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int parse_map_body(char *content, t_map *map)
+int	parse_map_body(char *content, t_map *map)
 {
 	int		i;
 	int		j;
 	char	*ptr;
-	int 	len;
-	
+	int		len;
+
 	ptr = skip_first_line(content);
 	if (!ptr)
 		return (0);
@@ -37,14 +37,17 @@ int parse_map_body(char *content, t_map *map)
 		j = 0;
 		while (j < map->cols)
 		{
-			map->map_data[i][j] = *ptr;
+			if (ptr[j] != map->empty && ptr[j] != map->obs)
+				return (0);
+			map->map_data[i][j] = ptr[j];
 			j++;
-			ptr++;
 		}
 		map->map_data[i][j] = '\0';
-		if (*ptr != '\n')
+		ptr += map->cols;
+		if (*ptr == '\n')
+			ptr++;
+		else if (i < map->rows - 1)
 			return (0);
-		ptr++;
 		i++;
 	}
 	return (1);

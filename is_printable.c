@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_printable.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 19:29:41 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/25 19:31:15 by muarici          ###   ########.fr       */
+/*   Updated: 2025/11/26 15:36:38 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_is_printable(char c)
+int	ft_is_printable(char c)
 {
 	return (c <= 126 && c >= 32);
 }
