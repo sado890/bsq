@@ -6,7 +6,7 @@
 /*   By: sevyesil <sevyesil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 01:55:50 by sevyesil          #+#    #+#             */
-/*   Updated: 2025/11/26 03:42:17 by sevyesil         ###   ########.fr       */
+/*   Updated: 2025/11/26 10:15:45 by sevyesil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	**allocate_dp(int rows, int cols)
 {
 	int	**dp;
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	dp = (int **)malloc(rows * sizeof(int *));
@@ -30,8 +30,8 @@ int	**allocate_dp(int rows, int cols)
 			j = 0;
 			while (j < i)
 			{
-				free(dp[i]);
-				i++;
+				free(dp[j]);
+				j++;
 			}
 			free(dp);
 			return (NULL);
