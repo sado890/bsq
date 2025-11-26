@@ -6,7 +6,7 @@
 /*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 00:46:31 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/26 00:52:44 by muarici          ###   ########.fr       */
+/*   Updated: 2025/11/26 08:11:16 by muarici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,37 @@ int get_line_length(char *map_start)
         i++;
     }
     return (i);
+}
+char **allocate_map_data(int rows, int cols)
+{
+    char **map_data;
+    int i;
+
+    map_data = (char **)malloc(sizeof(char *) * rows);
+    if (!map_data)
+        return (NULL);
+    i = 0;
+    while (i < rows)
+    {
+        map_data[i] = (char *)malloc(sizeof(char) * (cols + 1));
+        if (!map_data[i])
+		{
+			free_map_data(map_data,i);
+            return (NULL);
+		}
+		i++;
+    }
+    return (map_data);
+}
+void free_map_data(char **map_data, int count)
+{
+    int i;
+
+    i = 0;
+    while (i < count)
+    {
+        free(map_data[i]);
+        i++;
+    }
+    free(map_data);
 }
