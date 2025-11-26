@@ -6,18 +6,41 @@
 /*   By: muarici <muarici@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 08:14:15 by muarici           #+#    #+#             */
-/*   Updated: 2025/11/26 16:20:58 by muarici          ###   ########.fr       */
+/*   Updated: 2025/11/26 17:47:31 by muarici          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
+static char	*process_row(char *ptr, t_map *map, int row)
+{
+	int	len;
+	int	j;
+
+	len = get_line_length(ptr);
+	if (len != map->cols)
+		return (NULL);
+	j = 0;
+	while (j < map->cols)
+	{
+		if (ptr[j] != map->empty && ptr[j] != map->obs)
+			return (NULL);
+		map->map_data[row][j] = ptr[j];
+		j++;
+	}
+	map->map_data[row][j] = '\0';
+	ptr += map->cols;
+	if (*ptr == '\n')
+		ptr++;
+	else if (row < map->rows - 1)
+		return (NULL);
+	return (ptr);
+}
+
 int	parse_map_body(char *content, t_map *map)
 {
 	int		i;
-	int		j;
 	char	*ptr;
-	int		len;
 
 	ptr = skip_first_line(content);
 	if (!ptr)
@@ -31,22 +54,8 @@ int	parse_map_body(char *content, t_map *map)
 	i = 0;
 	while (i < map->rows)
 	{
-		len = get_line_length(ptr);
-		if (len != map->cols)
-			return (0);
-		j = 0;
-		while (j < map->cols)
-		{
-			if (ptr[j] != map->empty && ptr[j] != map->obs)
-				return (0);
-			map->map_data[i][j] = ptr[j];
-			j++;
-		}
-		map->map_data[i][j] = '\0';
-		ptr += map->cols;
-		if (*ptr == '\n')
-			ptr++;
-		else if (i < map->rows - 1)
+		ptr = process_row(ptr, map, i);
+		if (!ptr)
 			return (0);
 		i++;
 	}
